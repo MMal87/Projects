@@ -18,7 +18,7 @@ def test_adding_multiple_items_to_order_and_viewing_order_and_recieving_message(
     order.add("Cheeseburger: 7.99")
     order.view_order()
     order.final_bill() == "['Grilled Chicken Sandwich: 8.99', 'Caesar Salad: 6.99', 'Cheeseburger: 7.99']\nGrand Total: 23.97"
-    assert order.send_confirmation("07809720762") is not None
+    assert order.send_confirmation("") is not None
 
 
 """WHen entering a number of items, the final bill will be returned along with a list of items ordered"""
