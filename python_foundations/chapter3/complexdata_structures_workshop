@@ -1,0 +1,152 @@
+painlist = [[1,2,3],[True,False],["a","b","c","d"]]
+painlist[1]
+# [True, False]
+painlist[1][1]
+# False
+painlist[2][2]
+# 'c'
+for innerlist in painlist:
+    print(innerlist)
+
+# [1, 2, 3]
+# [True, False]
+# ['a', 'b', 'c', 'd']
+for innerlist in painlist:
+    innerlist.append(0)
+
+painlist
+# [[1, 2, 3, 0], [True, False, 0], ['a', 'b', 'c', 'd', 0]]
+for innerlist in painlist:
+    innerlist.pop()
+
+# 0
+# 0
+# 0
+painlist
+# [[1, 2, 3], [True, False], ['a', 'b', 'c', 'd']]
+for innerlist in painlist:
+    innerlist.reverse()
+
+painlist
+# [[3, 2, 1], [False, True], ['d', 'c', 'b', 'a']]
+biglist = [[[1,2,3],[4,5,6],[7,8,9]],[[10,11,12],[13,14,15],[16,17,18]],[[19,20,21],[22,23,24],[25,26,27]]]
+biglist
+# [[[1, 2, 3], [4, 5, 6], [7, 8, 9]], [[10, 11, 12], [13, 14, 15], [16, 17, 18]], [[19, 20, 21], [22, 23, 24], [25, 26, 27]]]
+for mindbogglelist in biglist:
+    for minilist in mindbogglelist:
+        minilist.reverse()
+
+biglist
+# [[[3, 2, 1], [6, 5, 4], [9, 8, 7]], [[12, 11, 10], [15, 14, 13], [18, 17, 16]], [[21, 20, 19], [24, 23, 22], [27, 26, 25]]]
+biglist = [[[1,2,3],[4,5,6],[7,8,9]],[[10,11,12],[13,14,15],[16,17,18]],[[19,20,21],[22,23,24],[25,26,27]]]
+for mindbogglelist in biglist:
+    for minilist in mindbogglelist:
+        minilist.reverse()
+    mindbogglelist.reverse()
+
+biglist.reverse()
+biglist
+# [[[27, 26, 25], [24, 23, 22], [21, 20, 19]], [[18, 17, 16], [15, 14, 13], [12, 11, 10]], [[9, 8, 7], [6, 5, 4], [3, 2, 1]]]
+for innerlist in biglist[0]:
+    innerlist.reverse()
+
+biglist
+# [[[25, 26, 27], [22, 23, 24], [19, 20, 21]], [[18, 17, 16], [15, 14, 13], [12, 11, 10]], [[9, 8, 7], [6, 5, 4], [3, 2, 1]]]
+paindict = {"a":{"x":1}, "b":{"x":2}}
+paindict["a"]["x"]
+# 1
+paindict["a"]
+# {'x': 1}
+
+my_var = "x"
+paindict["a"][my_var]
+# 1
+paindict.get("a")
+# {'x': 1}
+paindict.get("a").get("x")
+# 1
+paindict.get("a").keys()
+# dict_keys(['x'])
+paindict.get("a").get("y")
+paindict.get("a").get("y", "nope")
+# 'nope'
+for key in paindict.keys():
+    print(key)
+
+# a
+# b
+for key in paindict:
+    print(key)
+
+# a
+# b
+for key in paindict.keys():
+    print(paindict[key])
+
+{'x': 1}
+{'x': 2}
+for key in paindict.keys():
+     print(paindict[key]["x"])
+
+# 1
+# 2
+paindict = {"a":{"x":1}, "b":{"y":2}}
+for key in paindict.keys():
+    for unknownkey in paindict[key].keys():
+        print(paindict[key][unknownkey])
+
+# 1
+# 2
+houses = {"a": {2021: {"daysofsun":24, "daysofrain":100}, 2020: {"daysofsun":32, "daysofrain":91}}, "b": {2019: {"daysofsun":43, "daysofrain":101}}, "c": {2019: {"daysofsun":55, "daysofrain":66}, 2018: {"daysofsun":61, "daysofrain":59}, 2017: {"daysofsun":7, "daysofrain":200}
+ }
+
+houses = {"a": {2021: {"daysofsun":24, "daysofrain":100}, 2020: {"daysofsun":32, "daysofrain":91}}, "b": {2019: {"daysofsun":43, "daysofrain":101}}, "c": {2019: {"daysofsun":55, "daysofrain":66}, 2018: {"daysofsun":61, "daysofrain":59}, 2017: {"daysofsun":7, "daysofrain":200}}}
+import pprint
+pprint.pprint(houses)
+# {'a': {2020: {'daysofrain': 91, 'daysofsun': 32},
+#        2021: {'daysofrain': 100, 'daysofsun': 24}},
+#  'b': {2019: {'daysofrain': 101, 'daysofsun': 43}},
+#  'c': {2017: {'daysofrain': 200, 'daysofsun': 7},
+#        2018: {'daysofrain': 59, 'daysofsun': 61},
+#        2019: {'daysofrain': 66, 'daysofsun': 55}}}
+for house in houses:
+     pprint(houses[house])
+
+for house in houses:
+     pprint.pprint(houses[house])
+
+# {2020: {'daysofrain': 91, 'daysofsun': 32},
+#  2021: {'daysofrain': 100, 'daysofsun': 24}}
+# {2019: {'daysofrain': 101, 'daysofsun': 43}}
+# {2017: {'daysofrain': 200, 'daysofsun': 7},
+#  2018: {'daysofrain': 59, 'daysofsun': 61},
+#  2019: {'daysofrain': 66, 'daysofsun': 55}}
+for house in houses:
+    for year in houses[house]:
+        print(houses[house][year])
+
+# {'daysofsun': 24, 'daysofrain': 100}
+# {'daysofsun': 32, 'daysofrain': 91}
+# {'daysofsun': 43, 'daysofrain': 101}
+# {'daysofsun': 55, 'daysofrain': 66}
+# {'daysofsun': 61, 'daysofrain': 59}
+# {'daysofsun': 7, 'daysofrain': 200}
+for house in houses:
+    for year in houses[house]:
+        if houses[house][year]["daysofsun"] > 40:
+            print(year)
+
+# 2019
+# 2019
+# 2018
+housesbad = {"a": [{2021: {"daysofsun":24, "daysofrain":100}}, {2020: {"daysofsun":32, "daysofrain":91}}], "b": [{2019: {"daysofsun":43, "daysofrain":101}}], "c": [{2019: {"daysofsun":55, "daysofrain":66}}, {2018: {"daysofsun":61, "daysofrain":59}}, {2017: {"daysofsun":7, "daysofrain":200}}, {2016: {"daysofsun":24, "daysofrain":100}}]}
+pprint.pprint(housesbad)
+# {'a': [{2021: {'daysofrain': 100, 'daysofsun': 24}},
+#        {2020: {'daysofrain': 91, 'daysofsun': 32}}],
+#  'b': [{2019: {'daysofrain': 101, 'daysofsun': 43}}],
+#  'c': [{2019: {'daysofrain': 66, 'daysofsun': 55}},
+#        {2018: {'daysofrain': 59, 'daysofsun': 61}},
+#        {2017: {'daysofrain': 200, 'daysofsun': 7}},
+#        {2016: {'daysofrain': 100, 'daysofsun': 24}}]}
+
+#It's unneccessary to do a list of dicts inside a dict because then you need an extra loop to get to certain information
