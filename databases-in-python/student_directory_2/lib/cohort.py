@@ -5,3 +5,9 @@ class Cohorts:
         self.starting_date = starting_date
         self.students = students or []
 
+
+    def __eq__(self, other):
+        return self.__dict__ == other.__dict__
+
+    def __repr__(self):
+        return f"Cohorts({self.id}, {self.cohort_name}, {self.starting_date}, {self.students})"

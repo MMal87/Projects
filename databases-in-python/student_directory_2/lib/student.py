@@ -8,3 +8,7 @@ class Students:
 
     def __eq__(self, other):
         return self.__dict__ == other.__dict__
+        
+    
+    def __repr__(self):
+        return f"Student({self.id}, {self.student_name}, {self.cohort_id})"

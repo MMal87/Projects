@@ -10,5 +10,6 @@ def test_find_with_students(db_connection):
     repository = CohortRepository(db_connection)
 
     result = repository.find_with_students(1)
-
-    assert result == Cohorts(1, 'Cohort 1', '2022-01-01', [Students(1, 'John Smith', 1), Students(2, 'Jane Doe', 1)])
+    print(result)
+  
+    assert result == Cohorts(1, 'Cohort A', '2022-01-01', [Students(1, "John Smith", 1), Students(2, "Jane Doe", 1)])

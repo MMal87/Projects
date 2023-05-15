@@ -1,5 +1,5 @@
-from cohort import Cohorts
-from student import Students
+from lib.cohort import Cohorts
+from lib.student import Students
 
 class CohortRepository:
     def __init__(self, connection):
@@ -12,7 +12,7 @@ class CohortRepository:
             student = Students(row["id"], row["student_name"], row["cohort_id"])
             students.append(student)
             print(row)
-            cohorts = Cohorts(row[0]["id"], row[0]["cohort_name"], row[0]["starting_date"], students)
-        return cohorts
+        cohort = Cohorts(rows[0]["id"], rows[0]["cohort_name"], rows[0]["starting_date"], students)
+        return cohort
 
 
