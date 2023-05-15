@@ -11,14 +11,13 @@ class PostRepository:
         
         comments = []
         for row in rows:
-            #print(row)
-            comment = Comments(row["id"], row["author_name"], row["comment_content"], row["post_id"])
+            print(f"Position 1 {row}")
+            comment = Comments(row["comment_id"], row["author_name"], row["comment_content"], row["post_id"])
             
             comments.append(comment)
             
             
             
         post = Posts(rows[0]["post_id"], rows[0]["title"], rows[0]["post_content"], comments)
-        print(post)
-        exit()
+        print(f"Position 2 {post}")
         return post    

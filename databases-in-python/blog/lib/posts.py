@@ -12,4 +12,4 @@ class Posts:
         
     
     def __repr__(self):
-        return f"Post({self.id}, {self.title}, {self.post_content})"
+        return f"Posts({self.id}, {self.title}, {self.post_content})"
