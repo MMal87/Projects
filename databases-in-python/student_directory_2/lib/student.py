@@ -11,4 +11,4 @@ class Students:
         
     
     def __repr__(self):
-        return f"Student({self.id}, {self.student_name}, {self.cohort_id})"
+        return f"Students({self.id}, {self.student_name}, {self.cohort_id})"
