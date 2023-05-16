@@ -47,10 +47,6 @@ def count_vowels():
 @app.route('/sort-names', methods=['POST'])
 def sort_names():
     names = request.form['names']
-    # names_split = names.split(",")
-    # sorted_names = sorted(names_split)
-    # sorted_name_string = ",".join(sorted_names)
-    # return sorted_name_string
     sorted_string = ','.join(sorted(names.split(',')))
     return sorted_string
 
