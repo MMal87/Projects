@@ -3,20 +3,67 @@ _Include the HTTP method, the path, and any query or body parameters._
 ```
 # EXAMPLE
 
-# albums  route
-POST /albums
-  title: string
-  release_year: number (str)
-  artist_id: number (str)
-```
+# artist 
+GET /artists
+expected response: 200 status code 
+and list of artists
+Pixies
+Abba
+Taylor Swift 
+Nina Simone   
 
-# albums 
-GET /albums
+# albums  route
+# Request:
+POST /artists
+
+# With body parameters:
+name=Wild nothing
+genre=Indie
+
+# Expected response (200 OK)
+(No content)
+```
+# artist 
+GET /artists
+expected response: 200 status code 
+and list of artists
+Pixies, Abba, Taylor Swift, Nina Simone, Wild Nothing 
+
 
 
 ## 2. Create Examples as Tests
 
 _Go through each route and write down one or more example responses._
+test all 
+returns 200 status code 
+
+def test_get_artists(web_client):
+    response = web_client.get('/artists')
+    assert response.status_code == 200
+    assert response.data.decode('utf-8') == 'Pixies, Abba, Taylor Swift, Nina Simone'
+
+def test_post_artist(web_client):
+    post_response = web_client.post('/artists', data={
+      'artist_name': 'Wild Nothing', 'genre': 'Indie'
+    })
+    assert post_response.status_code == 200
+    assert post_response.data.decode('utf-8') == ""
+    get_response = web_client.get('/artists')
+    assert response.status_code == 200
+    assert response.data.decode('utf-8') == 'Pixies, Abba, Taylor Swift, Nina Simone'
+
+def test_no_artist_input(web_client):
+    response = web_client.post('/artists')
+    assert post_response.status_code == 400
+    assert response.data.decode('utf-8') == "You need to enter an artist AND genre"
+    get_response = web_client.get('/artists')
+    assert response.status_code == 200
+    assert response.data.decode('utf-8') == 'Pixies, Abba, Taylor Swift, Nina Simone'
+
+  
+
+
+
 
 _Remember to try out different parameter values._
 

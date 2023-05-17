@@ -5,22 +5,14 @@ _Copy this recipe template to design and create a database table from a specific
 ## 1. Extract nouns from the user stories or specification
 
 ```
-# EXAMPLE USER STORY:
-# (analyse only the relevant part - here, the final line).
+# Request:
+GET /artists
 
-As a music lover,
-So I can organise my records,
-I want to keep a list of albums' titles.
-
-As a music lover,
-So I can organise my records,
-I want to keep a list of albums' release years.
-```
-
-```
+# Expected response (200 OK)
+Pixies, ABBA, Taylor Swift, Nina Simone
 Nouns:
 
-album, title, release year
+name, genre
 ```
 
 ## 2. Infer the Table Name and Columns
@@ -29,11 +21,11 @@ Put the different nouns in this table. Replace the example with your own nouns.
 
 | Record                | Properties          |
 | --------------------- | ------------------- |
-| album                 | title, release year, artist_id |
+| artist                | name, genre|
 
-Name of the table (always plural): `albums`
+Name of the table (always plural): `artists`
 
-Column names: `title`, `release_year`
+Column names: `name`, `genre`
 
 ## 3. Decide the column types
 
@@ -47,9 +39,9 @@ Remember to **always** have the primary key `id` as a first column. Its type wil
 # EXAMPLE:
 
 id: SERIAL
-title: text
-release_year: int
-artist_id: int
+artist_name: text
+genre: text
+
 ```
 
 ## 4. Write the SQL
@@ -60,11 +52,10 @@ artist_id: int
 
 -- Replace the table name, columm names and types.
 
-CREATE TABLE albums (
+CREATE TABLE artists (
   id SERIAL PRIMARY KEY,
-  title text,
-  release_year int
-  artist_id int
+  artist_name text,
+  genre text
 );
 ```
 
