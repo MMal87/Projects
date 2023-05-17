@@ -6,8 +6,8 @@ _Include the HTTP method, the path, and any query or body parameters._
 # albums  route
 POST /albums
   title: string
-  release_year: int
-  artist_id: int
+  release_year: number (str)
+  artist_id: number (str)
 ```
 
 # albums 
@@ -35,11 +35,25 @@ _Include the status code and the response body._
     artist_id: 1
 #  Expected response (200 OK):
 """
-status code
+
+"""
+# POST /albums
+#  Parameters:
+#   title: Bossanova
+    release_year: 1990
+    artist_id: 1
+#  Expected response (200 OK):
+"""
 """
 
 # GET /albums
-# Parameters: "Doolittle, 1988, 1"
+# expected response
+#Album(1, Doolittle, 1)
+#Album(2, Bossanova, 1)
+
+POST /albums
+400 Bad Request "You need to submit a title, release year and artist id"
+
 
 ```
 
