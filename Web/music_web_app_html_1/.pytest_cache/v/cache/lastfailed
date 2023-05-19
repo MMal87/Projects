@@ -1,0 +1,21 @@
+{
+  "tests/test_book_repository.py::test_get_all_records": true,
+  "tests/test_book_repository.py::test_get_single_record": true,
+  "tests/test_book_repository.py::test_create_record": true,
+  "tests/test_book_repository.py::test_delete_record": true,
+  "tests/test_example_routes.py::test_get_books": true,
+  "tests/test_example_routes.py::test_get_book": true,
+  "tests/test_example_routes.py::test_create_book": true,
+  "tests/test_example_routes.py::test_create_book_error": true,
+  "tests/test_example_routes.py::test_delete_book": true,
+  "tests/test_app.py::test_get_emoji": true,
+  "tests/test_app.py::test_view_albums": true,
+  "tests/test_app.py::test_get_list": true,
+  "tests/test_app.py::test_no_input": true,
+  "tests/test_app.py::test_get_artists": true,
+  "tests/test_app.py::test_get_albums": true,
+  "tests/test_app.py::test_get_single_album[chromium]": true,
+  "tests/test_app.py::test_get_single_albums_1[chromium]": true,
+  "tests/test_app.py::test_get_single_albums_2[chromium]": true,
+  "tests/test_albums_repository.py::test_find_method": true
+}

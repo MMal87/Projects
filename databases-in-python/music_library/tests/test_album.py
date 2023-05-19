@@ -21,8 +21,8 @@ def test_artists_format_nicely():
 We can compare two identical artists
 And have them be equal
 """
-# def test_albums_are_equal():
-#     album1 = Album(1, "Test Artist", "Test Genre")
-#     album2 = Album(1, "Test Artist", "Test Genre")
-#     assert album1 == album2
+def test_albums_are_equal():
+    album1 = Album(1, "Test Artist", "Test Genre")
+    album2 = Album(1, "Test Artist", "Test Genre")
+    assert album1 == album2
 
