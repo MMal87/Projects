@@ -20,5 +20,7 @@ class AlbumsRepository:
         rows = self._connection.execute('SELECT albums_table.title, albums_table.release_year, artists_table.artist_name FROM albums_table JOIN artists_table ON albums_table.artist_id = artists_table.id WHERE albums_table.id = %s', [album_id])
         row = rows[0] 
         return Albums(None, row['title'], row['release_year'], row['artist_name'])
+    
+    
   
     

@@ -17,5 +17,13 @@
   "tests/test_app.py::test_get_single_album[chromium]": true,
   "tests/test_app.py::test_get_single_albums_1[chromium]": true,
   "tests/test_app.py::test_get_single_albums_2[chromium]": true,
-  "tests/test_albums_repository.py::test_find_method": true
+  "tests/test_albums_repository.py::test_find_method": true,
+  "tests/test_albums_repository.py::test_list_all_albums": true,
+  "tests/test_example_routes.py::test_get_books[chromium]": true,
+  "tests/test_example_routes.py::test_get_book[chromium]": true,
+  "tests/test_example_routes.py::test_create_book[chromium]": true,
+  "tests/test_example_routes.py::test_create_book_error[chromium]": true,
+  "tests/test_example_routes.py::test_delete_book[chromium]": true,
+  "tests/test_app.py::test_get_artist_links[chromium]": true,
+  "tests/test_app.py::test_create_album[chromium]": true
 }

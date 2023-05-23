@@ -7,11 +7,12 @@
 
   {% for album in albums %}
     <div>
-       <h2>Title: {{ album.title }}</h2>
-        <p>Released: {{ album.release_year }}</p>
+       <h2><a href="/albums/{{album.id}}">{{ album.title }}</a></h2>
+
       </div>  
   {% endfor %}
-  <!-- ... -->
+  <a href="/albums/new">Add new album</a>
+  
   </body>
 </html>
 

@@ -9,8 +9,9 @@
     <h1>{{ album.title }}</h1>
     <p>
       Release year: {{ album.release_year }}<br>
-      Artist: {{ album.artist_id }}
+      Artist: {{ album.artist_id }} <!-- Because the 4th parameter in Albums class is set as artist_id, but in the find method, I've set artist_name as the 4th parameter -->
     </p>
+    <a href="/albums">Back to list</a>
     
   </body>
 </html>

@@ -12,6 +12,6 @@ def test_artists_are_equal():
     artist2 = Artist(1, 'Test name', "Test genre")
     assert artist1 == artist2
 
-# def test_artists_format_nicely():
-#     album = Albums(1, "Test Title", 1000, 1)
-#     assert str(album) == "Album(1, Test Title, 1000, 1)"
+def test_artists_format_nicely():
+    album = Artist(1, "Test Artist", "Test Genre")
+    assert str(album) == "Artist(1, Test Artist, Test Genre)"
