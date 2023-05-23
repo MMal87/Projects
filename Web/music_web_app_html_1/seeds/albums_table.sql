@@ -39,7 +39,7 @@ INSERT INTO albums_table (title, release_year, artist_id) VALUES ('Ring Ring', 1
 
 
 INSERT INTO artists_table (artist_name, genre) VALUES ('Pixies', 'Rock');
-INSERT INTO artists_table (artist_name, genre) VALUES ('Abba', 'Pop');
+INSERT INTO artists_table (artist_name, genre) VALUES ('ABBA', 'Pop');
 INSERT INTO artists_table (artist_name, genre) VALUES ('Taylor Swift', 'Pop');
 INSERT INTO artists_table (artist_name, genre) VALUES ('Nina Simone', 'Jazz');
 

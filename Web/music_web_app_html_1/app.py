@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 from lib.database_connection import get_flask_database_connection
 from lib.artist import Artist
 from lib.artist_repository import ArtistRepository
@@ -32,25 +32,36 @@ def post_albums():
         return "You need to submit a title, release_year and artist id", 400
     connection = get_flask_database_connection(app)
     repository = AlbumsRepository(connection)
-    album = Albums(None, request.form['title'], request.form['release_year'], request.form['artist_id'])
+    album = Albums(None, request.form['title'], request.form['release_year'])#, request.form['artist_id'])
     repository.create(album)
     return '', 200
-
-
-# """"Album all and get albums routes"""
-
-# @app.route('/albums', methods=['POST'])
-# def post_albums():
-#     if has_no_parameters_albums(request.form):
-#         return "You need to submit a title, release_year and artist id", 400
-#     connection = get_flask_database_connection(app)
-#     repository = AlbumsRepository(connection)
-#     album = Albums(None, request.form['title'], request.form['release_year'], request.form['artist_id'])
-#     repository.create(album)
-#     return '', 200
-
 def has_no_parameters_albums(form):
-    return ('title' not in form) or ('release_year' not in form) or ('artist_id' not in form)
+    return ('title' not in form) or ('release_year' not in form)
+
+""""Album all and get albums routes"""
+
+@app.route('/albums/new', methods=["GET"])
+def show_form():
+    return render_template("albums/new.html")
+
+@app.route('/albums', methods=["POST"])
+def add_album():
+    connection = get_flask_database_connection(app)
+    repository = AlbumsRepository(connection)
+    title = request.form['title']
+    release_year = request.form['release_year']
+    artist_id = request.form['artist_id']
+    #create a new album
+    album = Albums(None, title, release_year, artist_id)
+    #cgeck validity and if not, show form again with errors
+    if not album.is_valid():
+            return render_template('books/new.html', album=album, errors=album.generate_errors()), 400
+
+    repository.create(album)
+    return redirect(f"/albums/{album.id}")
+
+
+
 
 """"Artist all and get artists routes"""
 
@@ -83,18 +94,7 @@ def post_artists():
     repository.create(artist)
     return '', 200
 
-@app.route('/albums/new', methods=["GET"])
-def show_form():
-    return render_template("albums/new.html")
 
-@app.route('/albums', methods=["POST"])
-def add_album():
-    connection = get_flask_database_connection(app)
-    repository = AlbumsRepository(connection)
-
-    album = Albums(request.form['title'], request.form['release_year'], request.form["artist_id"])
-    repository.create(album)
-    return '', 200
     
 
 
