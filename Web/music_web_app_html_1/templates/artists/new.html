@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+  {% if errors %}
+  
+    <p class="t-errors">
+      Your submission contains errors: {{ errors | join(', ')}}
+    </p>
+  {% endif %}
+  <h1>New Artist</h1>
+<h2>Add a new artist</h2>
+  <form action="/artists" method="POST">
+
+  <p>
+
+    <label for="artist_name">Name</label>
+    <br>
+    <h2><input type="text" name="artist_name" id="artist_name"></h2>
+
+  </p>
+  <p>
+  <label for="genre">Genre</label>
+  <br>
+  <input type="text" name="genre" id="genre">
+</p>
+
+
+<p>
+  <input type="submit" value="Create Artist">
+</p>
+</form>
+
+</body>
+</html>

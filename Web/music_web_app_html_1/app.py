@@ -5,6 +5,7 @@ from lib.artist import Artist
 from lib.artist_repository import ArtistRepository
 from lib.albums import Albums
 from lib.albums_repository import AlbumsRepository
+from lib.album_parameters_validator import AlbumParametersValidator
 
 # Create a new Flask app
 app = Flask(__name__)
@@ -26,17 +27,16 @@ def get_single_album(id):
     album = repository.find(id)
     return render_template("albums/single-album.html", album=album)
 
-@app.route('/albums', methods=['POST'])
-def post_albums():
-    if has_no_parameters_albums(request.form):
-        return "You need to submit a title, release_year and artist id", 400
-    connection = get_flask_database_connection(app)
-    repository = AlbumsRepository(connection)
-    album = Albums(None, request.form['title'], request.form['release_year'])#, request.form['artist_id'])
-    repository.create(album)
-    return '', 200
-def has_no_parameters_albums(form):
-    return ('title' not in form) or ('release_year' not in form)
+# @app.route('/albums', methods=['POST'])
+# def post_albums():
+#     if has_no_parameters_albums(request.form):
+#         return "You need to submit a title, release_year and artist id", 400
+#     connection = get_flask_database_connection(app)
+#     repository = AlbumsRepository(connection)
+#     album = Albums(None, request.form['title'], request.form['release_year'], request.form['artist_id'])
+#     repository.create(album)
+#     return '', 200
+
 
 """"Album all and get albums routes"""
 
@@ -48,17 +48,27 @@ def show_form():
 def add_album():
     connection = get_flask_database_connection(app)
     repository = AlbumsRepository(connection)
-    title = request.form['title']
-    release_year = request.form['release_year']
-    artist_id = request.form['artist_id']
+    # title = request.form['title']
+    # release_year = int(request.form['release_year'])
+    validator = AlbumParametersValidator(request.form['title'], request.form['release_year'])
+    if not validator.is_valid():
+        errors = validator.generate_errors()
+        return render_template("albums/new.html", errors=errors)
+    
+    album = Albums(None, validator.get_valid_title, validator.get_valid_release_year, 1)
     #create a new album
-    album = Albums(None, title, release_year, artist_id)
+    # album = Albums(None, title, release_year, 1)
     #cgeck validity and if not, show form again with errors
-    if not album.is_valid():
-            return render_template('books/new.html', album=album, errors=album.generate_errors()), 400
+    # if not album.is_valid():
+    #         return render_template('albums/new.html', album=album, errors=album.generate_errors()), 400
 
     repository.create(album)
     return redirect(f"/albums/{album.id}")
+
+
+def has_no_parameters_albums(form):
+    return ('title' not in form) or ('release_year' not in form) or ('artist_id' not in form)
+
 
 
 
@@ -84,18 +94,20 @@ def get_single_artist(id):
     return render_template("artists/single-artist.html", artists=artists)
 
 
-@app.route('/artists', methods=['POST'])
-def post_artists():
-    if has_no_parameters(request.form):
-        return "You need to enter an artist AND genre", 400
+"""When adding an artist, it appears in the list of artists"""
+@app.route('/artists/new', methods=["GET"])
+def show_artist_form():
+    return render_template("artists/new.html")
+
+@app.route('/artists', methods=["POST"])
+def add_artist():
     connection = get_flask_database_connection(app)
     repository = ArtistRepository(connection)
-    artist = Artist(None, request.form['artist_name'], request.form['genre'])
+    artist_name = request.form['artist_name']
+    genre = request.form['genre']
+    artist = Artist(None, artist_name, genre)
     repository.create(artist)
-    return '', 200
-
-
-    
+    return redirect(f"/artists/{artist.id}")   
 
 
 

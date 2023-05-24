@@ -1,4 +1,4 @@
-from lib.post import Post
+# from lib.post import Post
 
 
 class PostRepository:
@@ -18,3 +18,5 @@ class PostRepository:
 
     def _generate_next_id(self):
         return max([post.id for post in self.store]) + 1
+
+

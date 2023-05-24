@@ -12,7 +12,10 @@ class ArtistRepository:
         return artists
     
     def create(self, artist):
-        self._connection.execute('INSERT into artists_table (artist_name, genre) VALUES (%s, %s)', [artist.artist_name, artist.genre])
+        rows = self._connection.execute('INSERT into artists_table (artist_name, genre) VALUES (%s, %s) RETURNING id', [artist.artist_name, artist.genre])
+        
+        artist.id = rows[0]['id']
+        print("HEY", artist.id)
         return None
     
      # Find a single artist by their id

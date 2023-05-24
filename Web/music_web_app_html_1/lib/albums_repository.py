@@ -16,6 +16,7 @@ class AlbumsRepository:
         rows = self._connection.execute('INSERT INTO albums_table (title, release_year, artist_id) VALUES (%s, %s, %s) RETURNING id', [album.title, album.release_year, album.artist_id])
         
         album.id = rows[0]['id']
+        
         return None
         
     

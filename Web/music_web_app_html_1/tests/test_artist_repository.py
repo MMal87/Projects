@@ -18,6 +18,7 @@ def test_create_method(db_connection):
     artist_repo = ArtistRepository(db_connection)
     artist = Artist(5, "Test Name", "Test Genre")
     artist_repo.create(artist)
+    assert artist.id == 5
     assert artist_repo.all() == [Artist(1, "Pixies", "Rock"), 
         Artist(2,"ABBA", "Pop"),
         Artist(3,"Taylor Swift", "Pop"),
