@@ -14,10 +14,12 @@ def get_posts():
 
 @app.route('/', methods=['POST'])
 def create_post():
+    tags = request.form['tags'].split(',')
+    tags = [tag.strip() for tag in tags]
     post = Post(None,
                 request.form['title'],
                 request.form['content'],
-                request.form['tags'].split(','))
+                tags)
     post = repository.create(post)
     return redirect(url_for('get_posts'))
 
@@ -25,6 +27,9 @@ def create_post():
 @app.route('/tags/<tag>', methods=['GET'])
 def get_posts_by_tag(tag):
     posts = repository.all_by_tag(tag)
+    print("HERE")
+    print(tag)
+    print(posts)
     return render_template('index.html.jinja2', posts=posts)
 
 

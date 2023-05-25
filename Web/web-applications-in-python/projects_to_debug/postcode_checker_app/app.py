@@ -2,8 +2,13 @@ import os
 from lib.postcode_checker import PostcodeChecker
 from flask import Flask, request, render_template
 
+
 app = Flask(__name__)
 
+@app.after_request
+def add_security_headers(resp):
+    resp.headers['Content-Security-Policy']='default-src \'self\''
+    return resp
 
 @app.route('/')
 def index():

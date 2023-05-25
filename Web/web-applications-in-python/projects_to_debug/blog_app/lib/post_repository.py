@@ -9,6 +9,7 @@ class PostRepository:
         return self.store
 
     def all_by_tag(self, tag):
+
         return [post for post in self.store if tag in post.tags]
 
     def create(self, post):
@@ -17,6 +18,8 @@ class PostRepository:
         return post
 
     def _generate_next_id(self):
+        if len(self.store) == 0:
+            return 1
         return max([post.id for post in self.store]) + 1
 
 

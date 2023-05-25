@@ -50,10 +50,13 @@ def test_create_post_with_tags(page, test_web_address):
     page.fill("input[name='title']", "My Next Day")
     page.fill("input[name='content']", "It was also a good day")
     page.fill("input[name='tags']", "art")
+    
     page.click("text=Create Post")
     page.goto(f"http://{test_web_address}/tags/music")
+    page.screenshot(path="screenshot.png", full_page=True)
     expect(page.locator(".t-title")).to_have_text("My Day")
     expect(page.locator(".t-content")).to_have_text("It was a good day")
     expect(page.locator(".t-title")).not_to_have_text("My Next Day")
     expect(page.locator(".t-content")).not_to_have_text("It was also a good day")
+    
 
