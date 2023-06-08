@@ -4,11 +4,14 @@ class PeepRepository:
     def __init__(self, connection):
         self._connection = connection
     def all(self):
-        rows = self._connection.execute('SELECT peeps.id, peeps.title, peeps.content, peeps.created_at, user_id, users.name FROM peeps JOIN users ON peeps.user_id = users.id ORDER BY created_at DESC')
+        rows = self._connection.execute('SELECT peeps.id, peeps.title, peeps.content, peeps.created_at, user_id, users.name FROM peeps INNER JOIN users ON peeps.user_id = users.id ORDER BY created_at DESC')
         peeps = []
+        users = {}
         for row in rows:
             item = Peep(row['id'], row['title'], row['content'], row['created_at'], row['user_id'], row['name'])
             peeps.append(item)
+            
+            print(peeps)
         return peeps
     
     def create(self, peep):

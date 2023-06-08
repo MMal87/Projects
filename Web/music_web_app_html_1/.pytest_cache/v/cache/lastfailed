@@ -25,5 +25,6 @@
   "tests/test_app.py::test_create_album[chromium]": true,
   "tests/test_app.py::test_create_album_error[chromium]": true,
   "tests/test_artist_validator.py::test_get_valid_release_year_if_release_year_valid": true,
-  "tests/test_artist_validator.py::test_get_valid_release_year_refuses_if_invalid": true
+  "tests/test_artist_validator.py::test_get_valid_release_year_refuses_if_invalid": true,
+  "tests/test_app.py::test_get_albums[chromium]": true
 }

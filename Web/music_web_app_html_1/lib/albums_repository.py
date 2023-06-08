@@ -10,6 +10,7 @@ class AlbumsRepository:
         for row in rows:
             album = Albums(row["id"], row["title"], row["release_year"], row["artist_id"])
             albums.append(album)
+        print(albums)            
         return albums
 
     def create(self, album):
